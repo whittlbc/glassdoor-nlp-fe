@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Home from './components/demo/Home';
+import Home from './components/home/Home';
 
 class Main extends Component {
 

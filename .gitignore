@@ -20,3 +20,5 @@ src/styles/css/*
 .idea/
 
 *.log
+
+.env

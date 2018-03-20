@@ -1,45 +1,36 @@
+import React, { Component } from 'react';
 import Ajax from '../../utils/Ajax';
-import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
-import React from 'react';
-import SpinnerBtn from '../shared/SpinnerBtn';
 
-class PredictionForm extends Form {
+class PredictionForm extends Component {
 
   constructor(props) {
     super(props);
+
     this.submit = this.submit.bind(this);
-    this.state.score = null;
-  }
 
-  componentDidUpdate() {
-    if (this.state.status === this.status.SERIALIZING && this.formValid()) {
-      this.submit();
-    }
-
-    return true;
+    this.state = {
+      score: null
+    };
   }
 
   submit() {
-    this.setState({ status: this.status.SENDING });
-
     const payload = {
-      pros: this.state.values[0],
-      cons: this.state.values[1]
+      pros: this.pros.serialize(),
+      cons: this.cons.serialize()
     };
 
     Ajax.post('/api/predict', payload, (data, failed) => {
+      var score;
+
       if (failed) {
-        console.warn('Request Failed');
-        return;
+        console.error('Request Failed');
+        score = null;
+      } else {
+        score = data.prediction;
       }
 
-      this.submitBtn.static();
-
-      this.setState({
-        status: this.status.STATIC,
-        score: data.prediction
-      })
+      this.setState({ score: score })
     });
   }
 
@@ -51,7 +42,7 @@ class PredictionForm extends Form {
           <FormInput placeholder="Cons" ref={(r) => { this.cons = r; }}/>
         </div>
         <div className="form-action-button-container">
-          <SpinnerBtn className="spinner-btn" onClick={this.submit} ref={(r) => { this.submitBtn = r; }}>Predict Score</SpinnerBtn>
+          <button className="submit-btn" onClick={this.submit}>Predict Score</button>
         </div>
         <div className="score-container">
           <span>Score:</span>

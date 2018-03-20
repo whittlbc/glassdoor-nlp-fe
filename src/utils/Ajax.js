@@ -89,13 +89,10 @@ class AjaxClass {
   }
 
   defaultHeaders() {
-    var headers = {};
-
-    if (process.env.DEMO_TOKEN) {
-      headers['Demo-Token'] = process.env.DEMO_TOKEN;
-    }
-
-    return headers;
+    return {
+      // 'Glassdoor-Nlp-Api-Token': process.env.API_HEADER_TOKEN
+      'Glassdoor-Nlp-Api-Token': 'VmEfXDotklZLDM867BWrT27sEdpQrJWosYkv4u6tu0I'
+    };
   }
 
   requestSucceeded(resp) {
