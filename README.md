@@ -1,1 +1,1 @@
-# LatticeAI Demo
+# Glassdoor NLP Front-end
