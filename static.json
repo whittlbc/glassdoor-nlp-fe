@@ -1,0 +1,19 @@
+{
+  "root": "build/",
+  "routes": {
+    "/favicon.ico": "/favicon.ico",
+    "/fonts/*": "/fonts/",
+    "/static/*": "/static/",
+    "/**": "/index.html"
+  },
+  "headers": {
+    "/**": {
+      "Cache-Control": "no-store, no-cache"
+    }
+  },
+  "proxies": {
+    "/api/": {
+      "origin": "http://glassdoor-nlp.herokuapp.com/api"
+    }
+  }
+}
