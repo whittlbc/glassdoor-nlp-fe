@@ -32,11 +32,8 @@ class PredictionForm extends Component {
         score = Math.round( parseFloat(data.prediction) * 10) / 10;
       }
 
-      setTimeout(() => {
-        this.submitBtn.static();
-        this.setState({ score: score })
-      }, 200);
-
+      this.submitBtn.static();
+      this.setState({ score: score })
     });
   }
 
