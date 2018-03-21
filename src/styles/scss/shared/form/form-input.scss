@@ -2,7 +2,7 @@
   background-color: #fff;
   box-shadow: none;
   outline: none;
-  border: 1px solid #dedede;
+  border: none;
   color: $default-dark;
   width: 100%;
 
@@ -13,6 +13,10 @@
   &.invalid-border {
     border: 2px solid $red;
   }
+}
+
+::placeholder {
+  color: #b0b0b0 !important;
 }
 
 input.form-input {
@@ -27,7 +31,7 @@ input.form-input {
 
 textarea.form-input {
   border-radius: 4px;
-  padding: 10px 12px;
+  padding: 9px 12px;
   resize: none;
   font-size: 14.5px;
 
