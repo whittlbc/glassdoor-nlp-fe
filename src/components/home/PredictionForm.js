@@ -44,7 +44,7 @@ class PredictionForm extends Component {
 
     return (
       <div className="score-container">
-        <div className="score-val">{this.state.score.toFixed(1)}</div>
+        <div className="score-val">{this.state.score}</div>
         <div className="score-text">Score</div>
       </div>
     );
